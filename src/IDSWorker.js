@@ -115,7 +115,12 @@ export default () => {
             const state = variable[0];
             const result = variable[1];
             if (state === 'success') {
-                return [...result, start];
+                const nodes = [];
+                for (let i = 0; i < result.length; i++) {
+                    nodes.push(result[i]);
+                }
+                nodes.push(start);
+                return nodes;
             } else {
                 DFSVisitedNodes = [];
             }
