@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ai-maze-solver/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/ai-maze-solver/static/js/main.70487d83.chunk.js",
+    "main.js.map": "/ai-maze-solver/static/js/main.70487d83.chunk.js.map",
+    "runtime-main.js": "/ai-maze-solver/static/js/runtime-main.99cf0531.js",
+    "runtime-main.js.map": "/ai-maze-solver/static/js/runtime-main.99cf0531.js.map",
+    "static/js/2.e22ac4b8.chunk.js": "/ai-maze-solver/static/js/2.e22ac4b8.chunk.js",
+    "static/js/2.e22ac4b8.chunk.js.map": "/ai-maze-solver/static/js/2.e22ac4b8.chunk.js.map",
+    "index.html": "/ai-maze-solver/index.html",
+    "precache-manifest.8e4bc258f27678b3edea64a955ed8742.js": "/ai-maze-solver/precache-manifest.8e4bc258f27678b3edea64a955ed8742.js",
+    "service-worker.js": "/ai-maze-solver/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/ai-maze-solver/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.e22ac4b8.chunk.js.LICENSE": "/ai-maze-solver/static/js/2.e22ac4b8.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.99cf0531.js",
+    "static/js/2.e22ac4b8.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.70487d83.chunk.js"
+  ]
+}
