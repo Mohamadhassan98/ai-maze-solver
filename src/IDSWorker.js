@@ -95,7 +95,9 @@ export default () => {
                         cutoffOccurred = true;
                     } else if (status === 'success') {
                         const nodes = [];
-                        nodes.push(...result);
+                        for (let i = 0; i < result.length; i++) {
+                            nodes.push(result[i]);
+                        }
                         nodes.push(move);
                         return ['success', nodes];
                     }
