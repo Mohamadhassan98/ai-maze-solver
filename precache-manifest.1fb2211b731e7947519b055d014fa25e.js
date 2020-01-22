@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "362964fb5408915a40465ba8a4e042c6",
+    "revision": "aa7e08aa5fefc2916d12411f82d5c83c",
     "url": "/ai-maze-solver/index.html"
   },
   {
-    "revision": "5e863d3c58e6a7f947fd",
+    "revision": "06bfcc0078a7e4e47560",
     "url": "/ai-maze-solver/static/css/main.5ecd60fb.chunk.css"
   },
   {
-    "revision": "f8be4ecc1391c1c630ac",
-    "url": "/ai-maze-solver/static/js/2.e22ac4b8.chunk.js"
+    "revision": "6b301cb4f7615fd4d98d",
+    "url": "/ai-maze-solver/static/js/2.e3647c57.chunk.js"
   },
   {
     "revision": "e2fc3609d47d90b8cc004bfe15ddf15e",
-    "url": "/ai-maze-solver/static/js/2.e22ac4b8.chunk.js.LICENSE"
+    "url": "/ai-maze-solver/static/js/2.e3647c57.chunk.js.LICENSE"
   },
   {
-    "revision": "5e863d3c58e6a7f947fd",
-    "url": "/ai-maze-solver/static/js/main.70487d83.chunk.js"
+    "revision": "06bfcc0078a7e4e47560",
+    "url": "/ai-maze-solver/static/js/main.50b9b918.chunk.js"
   },
   {
     "revision": "edcc9f4156de5a51c96f",
