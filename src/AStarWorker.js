@@ -12,14 +12,8 @@ export default () => {
         postMessage([result, t1 - t0, expanded.count]);
     });
 
-    class MapNode {
-        constructor(status, x, y, parent) {
-            this.status = status;
-            this.x = x;
-            this.y = y;
-            this.parent = parent;
-        }
-
+    function newNode(status, x, y, parent) {
+        return {status: status, x: x, y: y, parent: parent};
     }
 
     function equals(a, b) {
@@ -39,14 +33,14 @@ export default () => {
         const {start: statusStart, goal: statusGoal} = availableStateColors;
         const {x: startX, y: startY} = start;
         const {x: goalX, y: goalY} = goal;
-        const startNode = new MapNode(statusStart, startX, startY);
-        const goalNode = new MapNode(statusGoal, goalX, goalY);
+        const startNode = newNode(statusStart, startX, startY);
+        const goalNode = newNode(statusGoal, goalX, goalY);
         const nodes = [];
         board.forEach(value => {
             const row = [];
             value.forEach(node => {
                 const {x: nodeX, y: nodeY, status} = node;
-                row.push(new MapNode(status, nodeX, nodeY));
+                row.push(newNode(status, nodeX, nodeY));
             });
             nodes.push(row);
         });
@@ -70,8 +64,17 @@ export default () => {
     }
 
     function lowestValueAndKey(obj) {
-        const mapSort2 = new Map([...obj.entries()].sort((a, b) => a[1] - b[1]));
-        return mapSort2.entries().next().value;
+        let min;
+        for (let m of obj) {
+            min = m;
+            break;
+        }
+        for (let m of obj) {
+            if (m[1] < min[1]) {
+                min = m;
+            }
+        }
+        return min;
     }
 
     function aStarSearch(start, goal, board, expanded) {
@@ -115,13 +118,13 @@ export default () => {
         const possibleMoves = [];
         const {block, empty} = availableStateColors;
         if (x + 1 !== 20 && board[x + 1][y].status !== block)
-            possibleMoves.push(new MapNode(empty, x + 1, y, node));
+            possibleMoves.push(newNode(empty, x + 1, y, node));
         if (y + 1 !== 20 && board[x][y + 1].status !== block)
-            possibleMoves.push(new MapNode(empty, x, y + 1, node));
+            possibleMoves.push(newNode(empty, x, y + 1, node));
         if (x - 1 !== -1 && board[x - 1][y].status !== block)
-            possibleMoves.push(new MapNode(empty, x - 1, y, node));
+            possibleMoves.push(newNode(empty, x - 1, y, node));
         if (y - 1 !== -1 && board[x][y - 1].status !== block)
-            possibleMoves.push(new MapNode(empty, x, y - 1, node));
+            possibleMoves.push(newNode(empty, x, y - 1, node));
         return possibleMoves;
     }
 };

@@ -12,17 +12,6 @@ export default () => {
         postMessage([result, t1 - t0, expanded.count]);
     });
 
-
-    class MapNode {
-        constructor(status, x, y, parent) {
-            this.status = status;
-            this.x = x;
-            this.y = y;
-            this.parent = parent;
-        }
-
-    }
-
     function equals(a, b) {
         if (!a && !b) return true;
         if (!a || !b) return false;
@@ -40,14 +29,14 @@ export default () => {
         const {start: statusStart, goal: statusGoal} = availableStateColors;
         const {x: startX, y: startY} = start;
         const {x: goalX, y: goalY} = goal;
-        const startNode = new MapNode(statusStart, startX, startY);
-        const goalNode = new MapNode(statusGoal, goalX, goalY);
+        const startNode = newNode(statusStart, startX, startY);
+        const goalNode = newNode(statusGoal, goalX, goalY);
         const nodes = [];
         board.forEach(value => {
             const row = [];
             value.forEach(node => {
                 const {x: nodeX, y: nodeY, status} = node;
-                row.push(new MapNode(status, nodeX, nodeY));
+                row.push(newNode(status, nodeX, nodeY));
             });
             nodes.push(row);
         });
@@ -67,13 +56,13 @@ export default () => {
         const possibleMoves = [];
         const {block, empty} = availableStateColors;
         if (x + 1 !== 20 && board[x + 1][y].status !== block)
-            possibleMoves.push(new MapNode(empty, x + 1, y, node));
+            possibleMoves.push(newNode(empty, x + 1, y, node));
         if (y + 1 !== 20 && board[x][y + 1].status !== block)
-            possibleMoves.push(new MapNode(empty, x, y + 1, node));
+            possibleMoves.push(newNode(empty, x, y + 1, node));
         if (x - 1 !== -1 && board[x - 1][y].status !== block)
-            possibleMoves.push(new MapNode(empty, x - 1, y, node));
+            possibleMoves.push(newNode(empty, x - 1, y, node));
         if (y - 1 !== -1 && board[x][y - 1].status !== block)
-            possibleMoves.push(new MapNode(empty, x, y - 1, node));
+            possibleMoves.push(newNode(empty, x, y - 1, node));
         return possibleMoves;
     }
 
@@ -105,7 +94,10 @@ export default () => {
                     if (status === 'cutoff') {
                         cutoffOccurred = true;
                     } else if (status === 'success') {
-                        return ['success', [...result, move]];
+                        const nodes = [];
+                        nodes.push(...result);
+                        nodes.push(move);
+                        return ['success', nodes];
                     }
                 }
                 if (cutoffOccurred) {
@@ -127,5 +119,9 @@ export default () => {
             }
         }
         return [];
+    }
+
+    function newNode(status, x, y, parent) {
+        return {status: status, x: x, y: y, parent: parent};
     }
 };
