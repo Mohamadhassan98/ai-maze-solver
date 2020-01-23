@@ -75,11 +75,11 @@ export default function App() {
         const bfs = new WebWorker(BFSWorkerFile);
         bfs.onmessage = (event) => {
             const [path, time, expanded] = event.data;
-            setPath(([, I, A]) => [path, I, A]);
+            setPath(([, I, A]) => [path ? path : [], I, A]);
             setSearchTime(([, I, A]) => [time, I, A]);
             setExpandedNodeCount(([, I, A]) => [expanded, I, A]);
-            setSearchCost(([, I, A]) => [path.length, I, A]);
-            setSuccessful(([, I, A]) => [path.length !== 0, I, A]);
+            setSearchCost(([, I, A]) => [path ? path.length : '∞', I, A]);
+            setSuccessful(([, I, A]) => [path && path.length !== 0, I, A]);
             setProgress(prevState => {
                 switch (prevState) {
                     case 0:
@@ -98,11 +98,11 @@ export default function App() {
         const ids = new WebWorker(IDSWorkerFile);
         ids.onmessage = (event) => {
             const [path, time, expanded] = event.data;
-            setPath(([B, , A]) => [B, path, A]);
+            setPath(([B, , A]) => [B, path ? path : [], A]);
             setSearchTime(([B, , A]) => [B, time, A]);
             setExpandedNodeCount(([B, , A]) => [B, expanded, A]);
-            setSearchCost(([B, , A]) => [B, path.length, A]);
-            setSuccessful(([B, , A]) => [B, path.length !== 0, A]);
+            setSearchCost(([B, , A]) => [B, path ? path.length : '∞', A]);
+            setSuccessful(([B, , A]) => [B, path && path.length !== 0, A]);
             setProgress(prevState => {
                 switch (prevState) {
                     case 0:
@@ -121,11 +121,11 @@ export default function App() {
         const aStar = new WebWorker(AStarWorkerFile);
         aStar.onmessage = (event) => {
             const [path, time, expanded] = event.data;
-            setPath(([B, I,]) => [B, I, path]);
+            setPath(([B, I,]) => [B, I, path ? path : []]);
             setSearchTime(([B, I,]) => [B, I, time]);
             setExpandedNodeCount(([B, I,]) => [B, I, expanded]);
-            setSearchCost(([B, I,]) => [B, I, path.length]);
-            setSuccessful(([B, I,]) => [B, I, path.length !== 0]);
+            setSearchCost(([B, I,]) => [B, I, path ? path.length : '∞']);
+            setSuccessful(([B, I,]) => [B, I, path && path.length !== 0]);
             setProgress(prevState => {
                 switch (prevState) {
                     case 0:
