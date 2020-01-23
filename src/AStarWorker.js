@@ -93,7 +93,7 @@ export default () => {
             const possibleMoves = findPossibleMovesAndExpand(bestChoice, board);
             outer: for (let k = 0; k < possibleMoves.length; k++) {
                 const move = possibleMoves[k];
-                for (let value1 in frontier.values()) {
+                for (let value1 of frontier.values()) {
                     // noinspection JSUnfilteredForInLoop
                     if (equals(move, value1))
                         continue outer;
