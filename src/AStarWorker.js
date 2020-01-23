@@ -60,7 +60,7 @@ export default () => {
     }
 
     function calculateHeuristicsValue(node, goal) {
-        return Math.hypot((node.x - goal.x), (node.y - goal.y))
+        return Math.hypot((node.x - goal.x), (node.y - goal.y));
     }
 
     function lowestValueAndKey(obj) {
@@ -81,6 +81,9 @@ export default () => {
         const frontier = new Map();
         frontier.set(start, calculateFValue(start, goal));
         while (true) {
+            if (frontier.size === 0) {
+                return [];
+            }
             const bestChoice = lowestValueAndKey(frontier)[0];
             frontier.delete(bestChoice);
             expanded.count = expanded.count + 1;
