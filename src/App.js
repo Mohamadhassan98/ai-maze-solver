@@ -78,7 +78,7 @@ export default function App() {
             setPath(([, I, A]) => [path ? path : [], I, A]);
             setSearchTime(([, I, A]) => [time, I, A]);
             setExpandedNodeCount(([, I, A]) => [expanded, I, A]);
-            setSearchCost(([, I, A]) => [path ? path.length : '∞', I, A]);
+            setSearchCost(([, I, A]) => [path && path.length !== 0 ? path.length : '∞', I, A]);
             setSuccessful(([, I, A]) => [path && path.length !== 0, I, A]);
             setProgress(prevState => {
                 switch (prevState) {
@@ -101,7 +101,7 @@ export default function App() {
             setPath(([B, , A]) => [B, path ? path : [], A]);
             setSearchTime(([B, , A]) => [B, time, A]);
             setExpandedNodeCount(([B, , A]) => [B, expanded, A]);
-            setSearchCost(([B, , A]) => [B, path ? path.length : '∞', A]);
+            setSearchCost(([B, , A]) => [B, path && path.length !== 0 ? path.length : '∞', A]);
             setSuccessful(([B, , A]) => [B, path && path.length !== 0, A]);
             setProgress(prevState => {
                 switch (prevState) {
@@ -124,7 +124,7 @@ export default function App() {
             setPath(([B, I,]) => [B, I, path ? path : []]);
             setSearchTime(([B, I,]) => [B, I, time]);
             setExpandedNodeCount(([B, I,]) => [B, I, expanded]);
-            setSearchCost(([B, I,]) => [B, I, path ? path.length : '∞']);
+            setSearchCost(([B, I,]) => [B, I, path && path.length !== 0 ? path.length : '∞']);
             setSuccessful(([B, I,]) => [B, I, path && path.length !== 0]);
             setProgress(prevState => {
                 switch (prevState) {

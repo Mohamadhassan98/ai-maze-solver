@@ -79,6 +79,7 @@ export default () => {
 
     function aStarSearch(start, goal, board, expanded) {
         const frontier = new Map();
+        const exploredNodes = [];
         frontier.set(start, calculateFValue(start, goal));
         while (true) {
             if (frontier.size === 0) {
@@ -86,6 +87,7 @@ export default () => {
             }
             const bestChoice = lowestValueAndKey(frontier)[0];
             frontier.delete(bestChoice);
+            exploredNodes.push(bestChoice);
             expanded.count = expanded.count + 1;
             if (equals(bestChoice, goal)) {
                 return computeRoutingToStart(bestChoice)[0];
@@ -93,6 +95,12 @@ export default () => {
             const possibleMoves = findPossibleMovesAndExpand(bestChoice, board);
             outer: for (let k = 0; k < possibleMoves.length; k++) {
                 const move = possibleMoves[k];
+                for (let i = 0; i < exploredNodes.length; i++) {
+                    const node = exploredNodes[i];
+                    if (equals(node, move)) {
+                        continue outer;
+                    }
+                }
                 for (let value1 of frontier.keys()) {
                     if (equals(move, value1))
                         continue outer;
