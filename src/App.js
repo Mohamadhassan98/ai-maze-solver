@@ -362,6 +362,7 @@ export default function App() {
         BFSWorker.postMessage([startNode, goalNode, gameMapNodes]);
         IDSWorker.postMessage([startNode, goalNode, gameMapNodes]);
         AStarWorker.postMessage([startNode, goalNode, gameMapNodes]);
+        console.log('all searches started.');
         setSearched(true);
     };
 
